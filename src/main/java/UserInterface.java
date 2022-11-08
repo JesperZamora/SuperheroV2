@@ -1,7 +1,4 @@
-import javax.accessibility.AccessibleContext;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -66,7 +63,7 @@ public class UserInterface {
             case 4 -> controller.sortChoice("heroAge");
             default -> controller.sortChoice("heroName");
         }
-        controller.testCompare1();
+        controller.compareOne();
         sortHeroesByChoiceTwo();
     }
 
@@ -82,7 +79,7 @@ public class UserInterface {
                 case 4 -> controller.getNewChoice("heroAge");
                 default -> controller.getNewChoice("heroname");
             }
-            controller.testCompare2();
+            controller.compareTwo();
         }
     }
 

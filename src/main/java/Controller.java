@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class Controller {
     Database database;
@@ -42,15 +41,15 @@ public class Controller {
         allComparator.setAttribute(attributeChoice);
     }
 
-    public void testCompare1(){
+    public void compareOne(){
         Collections.sort(getSuperheroes(), allComparator);
     }
 
-    public void getNewChoice(String x) {
-        newChoice.setAttribute(x);
+    public void getNewChoice(String choice) {
+        newChoice.setAttribute(choice);
     }
 
-    public void testCompare2() {
+    public void compareTwo() {
         Collections.sort(getSuperheroes(), allComparator.thenComparing(newChoice));
     }
 
