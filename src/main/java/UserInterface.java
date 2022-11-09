@@ -40,16 +40,16 @@ public class UserInterface {
 
     public void addHero(){
         System.out.println("Add hero information:");
-        System.out.print("Hero-name: ");
+        System.out.print("Hero name: ");
         String heroName = readString();
 
-        System.out.print("Civil-name: ");
+        System.out.print("Civil name: ");
         String civilName = readString();
 
         System.out.print("Superpower: ");
         String heroPower = readString();
 
-        System.out.print("Hero-age: ");
+        System.out.print("Hero age: ");
         int heroAge = readInteger();
         controller.addHero(heroName,civilName,heroPower,heroAge);
     }
@@ -107,15 +107,13 @@ public class UserInterface {
     }
 
     public void editHero() {
-        System.out.println("Function not integrated yet...");
+        System.out.println("Superheroes in database:");
+        showHeroByNumber();
+
     }
     public void deleteHero() {
         System.out.println("Superheroes in database:");
-        int num = 1;
-        for(Superhero superhero : controller.getSuperheroes()) {
-            System.out.println("["+num+"] "+superhero);
-            num++;
-        }
+        showHeroByNumber();
 
         System.out.print("\nDelete hero by selecting its number: ");
         int remove = readInteger();
@@ -126,6 +124,15 @@ public class UserInterface {
         }
     }
 
+
+    public void showHeroByNumber() {
+        int num = 1;
+        for(Superhero superhero : controller.getSuperheroes()) {
+            System.out.println("["+num+"] "+superhero);
+            num++;
+        }
+
+    }
 
     public int readInteger(){
         while(!sc.hasNextInt()){
