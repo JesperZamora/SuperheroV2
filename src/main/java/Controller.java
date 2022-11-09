@@ -41,7 +41,7 @@ public class Controller {
         database.loadHeroFile(fileHandler.loadFile());
     }
 
-    public void sortChoice(String attributeChoice){
+    public void setChoice(String attributeChoice){
         allComparator.setAttribute(attributeChoice);
     }
 

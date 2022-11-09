@@ -10,7 +10,9 @@ public class UserInterface {
         sc = new Scanner(System.in);
         controller.loadFile();
     }
-
+    public void welcome(){
+        System.out.println("Welcome to The Superhero Database!");
+    }
     public void menuText(){
         System.out.println("""
                 \nMenu:
@@ -23,6 +25,7 @@ public class UserInterface {
     }
 
     public void startMenu(){
+        welcome();
         boolean isRunning = true;
         while(isRunning) {
             menuText();
@@ -32,7 +35,8 @@ public class UserInterface {
                 case 3 -> searchHero();
                 case 4 -> editHero();
                 case 5 -> deleteHero();
-                case 9 -> {System.out.println("Exiting program. Changes will be saved automatically!");isRunning = false; controller.saveHeroToFile();}
+                case 9 -> {System.out.println("Exiting program. Changes will be saved automatically!");
+                            isRunning = false; controller.saveHeroToFile();}
                 default -> System.out.println("No menu choice available");
             }
         }
@@ -57,7 +61,7 @@ public class UserInterface {
     public void sortHeroesMenu(){
         System.out.println("""
                 Sort heroes by:
-                1. Her name
+                1. Hero name
                 2. Civil name
                 3. Hero power
                 4. Hero age""");
@@ -66,11 +70,11 @@ public class UserInterface {
     public void sortHeroesByChoiceOne(){
         sortHeroesMenu();
         switch (readInteger()){
-            case 1 -> controller.sortChoice("heroName");
-            case 2 -> controller.sortChoice("civilName");
-            case 3 -> controller.sortChoice("heroPower");
-            case 4 -> controller.sortChoice("heroAge");
-            default -> controller.sortChoice("heroName");
+            case 1 -> controller.setChoice("heroName");
+            case 2 -> controller.setChoice("civilName");
+            case 3 -> controller.setChoice("heroPower");
+            case 4 -> controller.setChoice("heroAge");
+            default -> controller.setChoice("heroName");
         }
         controller.compareOne();
         sortHeroesByChoiceTwo();
@@ -122,7 +126,7 @@ public class UserInterface {
         }
     }
 
-    public void editHero() {
+    public void editHero() { //TODO: Move some of the code
         System.out.println("Superheroes in database:");
         showHeroByNumber();
 
@@ -170,6 +174,7 @@ public class UserInterface {
         int remove = readInteger();
         if(remove-1 < controller.getSuperheroes().size()){
             controller.deleteHero(remove);
+            System.out.println("Hero deleted \uD83D\uDDD1");
         } else{
             System.out.println("No hero in database by that number...");
         }
