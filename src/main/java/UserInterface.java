@@ -128,24 +128,36 @@ public class UserInterface {
 
         System.out.print("\nEdit hero by selecting its number: ");
         int editNum = readInteger();
-        Superhero editSuperhero = controller.getSuperheroes().get(editNum);
+        sc.nextLine();
 
-        //TODO: needs a service-message on all
-        String editHeroName = readString();
+        Superhero editSuperhero = controller.getSuperheroes().get(editNum-1);
+        System.out.println("Type change or press enter to jump over.");
+
+        System.out.print(editSuperhero.getHeroName()+": ");
+        String editHeroName = sc.nextLine();
         if(!editHeroName.isEmpty()){
             editSuperhero.setHeroName(editHeroName);
         }
-        String editCivilName = readString();
+        System.out.print(editSuperhero.getCivilName()+": ");
+        String editCivilName = sc.nextLine();
         if(!editCivilName.isEmpty()){
             editSuperhero.setCivilName(editCivilName);
         }
-        String editHeroPower = readString();
+        System.out.print(editSuperhero.getHeroPower()+": ");
+        String editHeroPower = sc.nextLine();
         if(!editHeroPower.isEmpty()){
             editSuperhero.setHeroPower(editHeroPower);
         }
-        String editHeroAge = readString();
+        System.out.print(editSuperhero.getAge()+": ");
+        String editHeroAge = sc.nextLine();
         if(!editHeroAge.isEmpty()){
             editSuperhero.setAge(Integer.parseInt(editHeroAge));
+        }
+
+        if(!editHeroName.isEmpty() || !editCivilName.isEmpty() ||!editHeroPower.isEmpty() || !editHeroAge.isEmpty()) {
+            System.out.println("\nYour hero informaion has been updated!");
+        } else {
+            System.out.println("\nNo changes were committed...");
         }
 
 
