@@ -14,12 +14,12 @@ public class UserInterface {
     public void menuText(){
         System.out.println("""
                 \nMenu:
-                1. add
-                2. show
-                3. search
-                4. edit
-                5. delete
-                9. exit program""");
+                1. Add
+                2. Show
+                3. Search
+                4. Edit
+                5. Delete
+                9. Exit program""");
     }
 
     public void startMenu(){
@@ -32,7 +32,7 @@ public class UserInterface {
                 case 3 -> searchHero();
                 case 4 -> editHero();
                 case 5 -> deleteHero();
-                case 9 -> {System.out.println("Exiting program");isRunning = false; controller.saveHeroToFile();}
+                case 9 -> {System.out.println("Exiting program. Changes will be saved automatically!");isRunning = false; controller.saveHeroToFile();}
                 default -> System.out.println("No menu choice available");
             }
         }
@@ -57,10 +57,10 @@ public class UserInterface {
     public void sortHeroesMenu(){
         System.out.println("""
                 Sort heroes by:
-                1. Hero-name
-                2. Civil-name
-                3. Hero-power
-                4. Hero-age""");
+                1. Her name
+                2. Civil name
+                3. Hero power
+                4. Hero age""");
     }
 
     public void sortHeroesByChoiceOne(){
