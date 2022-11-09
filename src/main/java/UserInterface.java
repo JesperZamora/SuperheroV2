@@ -32,7 +32,7 @@ public class UserInterface {
                 case 3 -> searchHero();
                 case 4 -> editHero();
                 case 5 -> deleteHero();
-                case 9 -> {System.out.println("Exiting program");isRunning = false;controller.saveHeroToFile();}
+                case 9 -> {System.out.println("Exiting program");isRunning = false; controller.saveHeroToFile();}
                 default -> System.out.println("No menu choice available");
             }
         }
@@ -54,6 +54,15 @@ public class UserInterface {
         controller.addHero(heroName,civilName,heroPower,heroAge);
     }
 
+    public void sortHeroesMenu(){
+        System.out.println("""
+                Sort heroes by:
+                1. Hero-name
+                2. Civil-name
+                3. Hero-power
+                4. Hero-age""");
+    }
+
     public void sortHeroesByChoiceOne(){
         sortHeroesMenu();
         switch (readInteger()){
@@ -67,17 +76,24 @@ public class UserInterface {
         sortHeroesByChoiceTwo();
     }
 
+    public void sortSecondaryChoice(){
+        System.out.println("""
+                Add a secondary sorting attribute?
+                1. yes
+                2. no""");
+    }
+
     public void sortHeroesByChoiceTwo(){
         sortSecondaryChoice();
         int choice = readInteger();
         if(choice == 1){
             sortHeroesMenu();
             switch (readInteger()) {
-                case 1 -> controller.getNewChoice("heroName");
-                case 2 -> controller.getNewChoice("civilName");
-                case 3 -> controller.getNewChoice("heroPower");
-                case 4 -> controller.getNewChoice("heroAge");
-                default -> controller.getNewChoice("heroname");
+                case 1 -> controller.setNewChoice("heroName");
+                case 2 -> controller.setNewChoice("civilName");
+                case 3 -> controller.setNewChoice("heroPower");
+                case 4 -> controller.setNewChoice("heroAge");
+                default -> controller.setNewChoice("heroname");
             }
             controller.compareTwo();
         }
@@ -109,6 +125,29 @@ public class UserInterface {
     public void editHero() {
         System.out.println("Superheroes in database:");
         showHeroByNumber();
+
+        System.out.print("\nEdit hero by selecting its number: ");
+        int editNum = readInteger();
+        Superhero editSuperhero = controller.getSuperheroes().get(editNum);
+
+        //TODO: needs a service-message on all
+        String editHeroName = readString();
+        if(!editHeroName.isEmpty()){
+            editSuperhero.setHeroName(editHeroName);
+        }
+        String editCivilName = readString();
+        if(!editCivilName.isEmpty()){
+            editSuperhero.setCivilName(editCivilName);
+        }
+        String editHeroPower = readString();
+        if(!editHeroPower.isEmpty()){
+            editSuperhero.setHeroPower(editHeroPower);
+        }
+        String editHeroAge = readString();
+        if(!editHeroAge.isEmpty()){
+            editSuperhero.setAge(Integer.parseInt(editHeroAge));
+        }
+
 
     }
     public void deleteHero() {
@@ -148,21 +187,6 @@ public class UserInterface {
         return input;
     }
 
-    public void sortHeroesMenu(){
-        System.out.println("""
-                Sort heroes by:
-                1. Hero-name
-                2. Civil-name
-                3. Hero-power
-                4. Hero-age""");
-    }
-
-    public void sortSecondaryChoice(){
-        System.out.println("""
-                Add a secondary sorting attribute?
-                1. yes
-                2. no""");
-    }
 }
 
 

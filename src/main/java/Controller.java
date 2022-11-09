@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Controller {
-    Database database;
-    FileHandler fileHandler;
-    AllComparator allComparator;
-    AllComparator newChoice;
-    boolean editDone = false;
+    private Database database;
+    private FileHandler fileHandler;
+    private AllComparator allComparator;
+    private AllComparator newChoice;
+    private boolean editDone = false;
 
     public Controller(){
         database = new Database();
@@ -49,7 +49,7 @@ public class Controller {
         Collections.sort(getSuperheroes(), allComparator);
     }
 
-    public void getNewChoice(String choice) {
+    public void setNewChoice(String choice) {
         newChoice.setAttribute(choice);
     }
 
