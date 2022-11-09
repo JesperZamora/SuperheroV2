@@ -110,8 +110,22 @@ public class UserInterface {
         System.out.println("Function not integrated yet...");
     }
     public void deleteHero() {
-        System.out.println("Function not integrated yet...");
+        System.out.println("Superheroes in database:");
+        int num = 1;
+        for(Superhero superhero : controller.getSuperheroes()) {
+            System.out.println("["+num+"] "+superhero);
+            num++;
+        }
+
+        System.out.print("\nDelete hero by selecting its number: ");
+        int remove = readInteger();
+        if(remove-1 < controller.getSuperheroes().size()){
+            controller.deleteHero(remove);
+        } else{
+            System.out.println("No hero in database by that number...");
+        }
     }
+
 
     public int readInteger(){
         while(!sc.hasNextInt()){

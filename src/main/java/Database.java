@@ -15,6 +15,11 @@ public class Database {
         superheroes.add(new Superhero(heroName,civilName,heroPower,heroAge));
     }
 
+
+    public void deleteHero(int remove) {
+        superheroes.remove(remove-1);
+    }
+
     public ArrayList<Superhero> searchHero(String searchWord){
         ArrayList<Superhero> foundHero = new ArrayList<>();
 

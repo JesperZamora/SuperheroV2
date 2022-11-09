@@ -19,6 +19,10 @@ public class Controller {
         editDone = true;
         database.addHero(heroName,civilName,heroPower,heroAge);
     }
+    public void deleteHero(int remove) {
+        editDone = true;
+        database.deleteHero(remove);
+    }
 
     public ArrayList<Superhero> getSuperheroes(){
         return database.getSuperheroes();
